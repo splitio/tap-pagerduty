@@ -1,0 +1,110 @@
+{
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "type": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "summary": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "self": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "html_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "website_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "long_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "logo_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "thumbnail_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "description": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "integration_guide_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "connectable": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "generic_service_type": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "alert_creation_default": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "alert_creation_editable": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "is_pdf_cef": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  },
+  "type": [
+    "null",
+    "object"
+  ]
+}
