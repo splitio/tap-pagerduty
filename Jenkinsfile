@@ -59,7 +59,7 @@ pipeline {
               steps{
                 setState("${PAGERDUTY_STATE}")
               }
-            }// stage State Pagerduty
+            } // stage State Pagerduty
           } // Parallel
         } // Stage Create Venv
 
@@ -74,17 +74,17 @@ pipeline {
           }
           steps{
             script{
-                sh(returnStdout: false, script: 'set -euo pipefail')
-                sh(returnStdout: false, script: 'envsubst < config-pagerduty.json.tpl > config-pagerduty.json')
-                sh(returnStdout: false, script: 'envsubst < config-snowflake.json.tpl > "${SF_CONFIG_FILE}"')
-                status=sh(returnStatus: true, script: '${VENV_PAGERDUTY}/bin/tap-pagerduty -c config-pagerduty.json --catalog pagerduty-properties.json -s "${PAGERDUTY_STATE}" > "${TAP_OUTPUT}"  2>"${STDERRFILE}"')
-                catchError(status, "Tap-pagerduty", "Failed to collect data.", "${STDERRFILE}")
-                status=sh(returnStdout: false, script:'echo -e "\n" >>  ${PAGERDUTY_STATE}')
-                status=sh(returnStatus: true, script: 'cat ${TAP_OUTPUT} | ${VENV_SF}/bin/target-snowflake -c "${SF_CONFIG_FILE}" >> ${PAGERDUTY_STATE} 2>"${STDERRFILE}"')
-                catchError(status, "Tap-pagerduty", "Failed to send data.", "${STDERRFILE}")
+              sh(returnStdout: false, script: 'set -euo pipefail')
+              sh(returnStdout: false, script: 'envsubst < config-pagerduty.json.tpl > config-pagerduty.json')
+              sh(returnStdout: false, script: 'envsubst < config-snowflake.json.tpl > "${SF_CONFIG_FILE}"')
+              status=sh(returnStatus: true, script: '${VENV_PAGERDUTY}/bin/tap-pagerduty -c config-pagerduty.json --catalog pagerduty-properties.json -s "${PAGERDUTY_STATE}" > "${TAP_OUTPUT}"  2>"${STDERRFILE}"')
+              catchError(status, "Tap-pagerduty", "Failed to collect data.", "${STDERRFILE}")
+              status=sh(returnStdout: false, script:'echo -e "\n" >>  ${PAGERDUTY_STATE}')
+              status=sh(returnStatus: true, script: 'cat ${TAP_OUTPUT} | ${VENV_SF}/bin/target-snowflake -c "${SF_CONFIG_FILE}" >> ${PAGERDUTY_STATE} 2>"${STDERRFILE}"')
+              catchError(status, "Tap-pagerduty", "Failed to send data.", "${STDERRFILE}")
             }
           }
-        }// stage Run Tap-pagerduty
+        } // stage Run Tap-pagerduty
 
     } // Stages
 
@@ -102,8 +102,8 @@ pipeline {
             [pattern: 'stderr*.out', type: 'INCLUDE']
           ]
         )
-      }//always
-    }// post
+      } //always
+    } // post
 } // Pipeline
 
 def setState(state){
