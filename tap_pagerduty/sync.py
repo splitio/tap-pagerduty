@@ -147,8 +147,8 @@ class PagerdutySync:
         stream = "incidents"
         loop = asyncio.get_event_loop()
 
-        singer.write_schema(stream, schema.to_dict(), ["id"])
-        #incidents = await loop.run_in_executor(None, self.client.incidents, self.state, self.config)
+        singer.write_schema(stream, schema, ["id"])
+        self._incidents = await loop.run_in_executor(None, self.client.incidents, self.state, self.config)
         if self._incidents:
             for incident in self._incidents['incidents']:
                 singer.write_record(stream, incident)
@@ -159,7 +159,7 @@ class PagerdutySync:
         stream = "alerts"
         loop = asyncio.get_event_loop()
 
-        singer.write_schema(stream, schema.to_dict(), ["id"])
+        singer.write_schema(stream, schema, ["id"])
         #incidents = await loop.run_in_executor(None, self.client.incidents, self.state, self.config)
         if self._incidents:
             for incident in self._incidents['incidents']:
@@ -175,18 +175,18 @@ class PagerdutySync:
         stream = "services"
         loop = asyncio.get_event_loop()
 
-        singer.write_schema(stream, schema.to_dict(), ["id"])
+        singer.write_schema(stream, schema, ["id"])
         services = await loop.run_in_executor(None, self.client.getAll, 'services')
         if services:
             for service in services['services']:
                 singer.write_record(stream, service)
 
-    async def sync_escalationPolicies(self, schema):
+    async def sync_escalation_policies(self, schema):
         """All Escalation Policies."""
-        stream = "escalationPolicies"
+        stream = "escalation_policies"
         loop = asyncio.get_event_loop()
 
-        singer.write_schema(stream, schema.to_dict(), ["id"])
+        singer.write_schema(stream, schema, ["id"])
         policies = await loop.run_in_executor(None, self.client.getAll, 'escalation_policies')
         if policies:
             for policie in policies['escalation_policies']:
@@ -196,7 +196,7 @@ class PagerdutySync:
         """All Teams."""
         stream = "teams"
         loop = asyncio.get_event_loop()
-        singer.write_schema(stream, schema.to_dict(), ["id"])
+        singer.write_schema(stream, schema, ["id"])
         teams = await loop.run_in_executor(None, self.client.getAll, 'teams')
         if teams:
             for team in teams['teams']:
@@ -206,7 +206,7 @@ class PagerdutySync:
         """All Users."""
         stream = "users"
         loop = asyncio.get_event_loop()
-        singer.write_schema(stream, schema.to_dict(), ["id"])
+        singer.write_schema(stream, schema, ["id"])
         users = await loop.run_in_executor(None, self.client.getAll, 'users')
         if users:
             for user in users['users']:
@@ -216,7 +216,7 @@ class PagerdutySync:
         """All Vendors."""
         stream = "vendors"
         loop = asyncio.get_event_loop()
-        singer.write_schema(stream, schema.to_dict(), ["id"])
+        singer.write_schema(stream, schema, ["id"])
         vendors = await loop.run_in_executor(None, self.client.getAll, 'vendors')
         if vendors:
             for vendor in vendors['vendors']:
