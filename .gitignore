@@ -1,2 +1,6 @@
 .DS_Store
 .idea/
+
+.venv
+tap_pagerduty.egg-info
+config-pagerduty.json
